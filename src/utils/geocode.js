@@ -11,7 +11,6 @@ const geocode = (address, callback) =>{
             callback('Unable to connect to location services!',undefined)
         }
         else if(features.length === 0){
-            console.log('features === 0, I\'m in geocode');
             callback('Unable to find location. Try another search.', undefined)
         }
         else{

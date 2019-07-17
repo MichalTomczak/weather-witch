@@ -26,7 +26,7 @@ app.use(express.static(publicDirectoryPath));
 
 app.get('',(req,res)=>{
    res.render('index',{
-       title: 'Weather App',
+       title: 'Weather Witch',
        name: 'Michał Tomczak'
    })
 });
@@ -53,17 +53,16 @@ app.get('/weather',(req,res)=>{
     }
 
    geocode(req.query.address, (error,{latitude,longitude,location}={})=>{
-       console.log(error);
-
        if(error)return res.send({error});
 
-       forecast(latitude,longitude,(error,{summary,temperature,rainChance}={})=>{
+       forecast(latitude,longitude,(error,{summary,temperature,rainChance,body}={})=>{
            if (error) return res.send({error});
-           forecastData = summary + ' It is currently ' + Math.round(temperature) + ' degress out. There is a ' + rainChance + '% chance of rain.';
+           forecastData = summary + ' It is currently ' + Math.round(temperature) + ' degress out. There is a ' + rainChance*100 + '% chance of rain.';
 
            res.send({
                forecast:forecastData,
-               address:location
+               address:location,
+               body
            })
        })
    });
