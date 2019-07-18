@@ -3,6 +3,7 @@ const searchLocation = document.querySelector('input');
 const firstParagraph = document.querySelector('#firstParagraph');
 const secondParagraph = document.querySelector('#secondParagraph');
 
+
 weatherForm.addEventListener('submit',(e)=>{
     e.preventDefault();
 
@@ -33,15 +34,21 @@ weatherForm.addEventListener('submit',(e)=>{
                     return new Date(0).setUTCSeconds(epoch);
                 };
 
-                dailyData.map((element,index)=>{
-                    dateClass = "date-day"+index;
-                    temperatureClass = "temperature-day"+index;
-                    dateToSet = new Date(element.time*1000);
-                    dateField = dateToSet.toLocaleString('pl-PL',{month:"2-digit",day:"2-digit"}) +"\n"+dateToSet.getFullYear();
-                    temperatureField = element.temperatureHigh;
+                dailyData.map((day,index)=>{
+                    const dateClass = "date-day"+index;
+                    const temperatureClass = "temperature-day"+index;
+                    const iconID = "icon-day"+index;
+                    const dateToSet = new Date(day.time*1000);
+                    const dateField = dateToSet.toLocaleString('pl-PL',{month:"2-digit",day:"2-digit"}) +"\n"+dateToSet.getFullYear();
+                    const temperatureField = Math.round(day.temperatureHigh)+' °C';
+                    const skycons = new Skycons;
+                    skycons.add(iconID, day.icon);
+                    skycons.play();
+
+
 
                     document.getElementsByClassName(dateClass)[0].innerHTML=dateField;
-                    document.getElementsByClassName(temperatureClass)[0].textContent=temperatureField;
+                    document.getElementsByClassName(temperatureClass)[0].textContent=decodeURI(temperatureField);
                     document.getElementById("forecast-table").style.display = 'inline-block';
 
                 })

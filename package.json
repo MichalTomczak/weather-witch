@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "hbs": "^4.0.4",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "skycons": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
