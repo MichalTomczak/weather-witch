@@ -55,10 +55,41 @@ button {
     padding: 8px;
 }
 
-table, th, tr, td{
-    border: 1px solid black;
+table{
+    table-layout: fixed;
+    width: 100px;
+}
+th,tr,td{
+    padding: 10px;
+    text-align: center;
+    overflow-wrap: normal;
+}
+
+th{
+    table-layout: fixed;
+    width:100px;
+}
+
+canvas{
+    margin: auto;
+    display: block;
+}
+.compass{
+    margin:auto;
+    display:block;
 }
 
 #forecast-table{
     display:none;
+}
+.nightTemp{
+    color:grey;
+    font-size: 75%;
+}
+
+.north {
+    font-weight: 600;
+    font-size: xx-small;
+    font-family: 'Varela Round', sans-serif;
+    color: red;
 }

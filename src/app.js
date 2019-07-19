@@ -55,13 +55,11 @@ app.get('/weather',(req,res)=>{
    geocode(req.query.address, (error,{latitude,longitude,location}={})=>{
        if(error)return res.send({error});
 
-       forecast(latitude,longitude,(error,{summary,temperature,rainChance,body}={})=>{
+       forecast(latitude,longitude,(error,{body}={})=>{
            if (error) return res.send({error});
-           forecastData = summary + ' It is currently ' + Math.round(temperature) + ' degress out. There is a ' + rainChance*100 + '% chance of rain.';
 
            res.send({
-               forecast:forecastData,
-               address:location,
+               location,
                body
            })
        })
