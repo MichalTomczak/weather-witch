@@ -102,5 +102,12 @@ weatherForm.addEventListener('submit',(e)=>{
             }
         })
     });
+    fetch('/xkcd').then((response)=>{
+        response.json().then(data=>{
+            console.log(data);
+            document.getElementsByClassName('comic')[0].setAttribute('src',data.img);
+        })
+
+    })
 });
 

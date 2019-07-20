@@ -93,3 +93,7 @@ canvas{
     font-family: 'Varela Round', sans-serif;
     color: red;
 }
+
+comic {
+    display:block;
+}

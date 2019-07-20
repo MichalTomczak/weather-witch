@@ -6,6 +6,7 @@ const express = require('express');
 const hbs = require('hbs');
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
+const xkcd = require('./utils/xkcd');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -64,6 +65,15 @@ app.get('/weather',(req,res)=>{
            })
        })
    });
+});
+
+app.get('/xkcd',(req,res)=>{
+    xkcd((img)=>{
+        console.log({img});
+        res.send ({
+            img
+        })
+    })
 });
 
 app.get('/products',(req,res)=>{
